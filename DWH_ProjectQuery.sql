@@ -2,7 +2,7 @@ CREATE DATABASE DWH;
 
 USE DWH;
 
--- Tabel Dimensi 
+-- Dimension Table
 
 CREATE TABLE DimCustomer (
 	CustomerId integer not null,
@@ -50,12 +50,7 @@ SELECT * FROM DimBranch
 SELECT * FROM DimAccount
 SELECT * FROM FactTransaction1
 
-
-
-## INI QUERY YANG FIX
-
-
-
+--- Make A Daily Transaction
 CREATE PROCEDURE DailyTransaction
     @start_date DATE,
     @end_date DATE
@@ -74,6 +69,7 @@ END;
 
 EXEC DailyTransaction @start_date = '2024-01-18', @end_date = '2024-01-21'
 
+--- Make A Balance Per Customer 
 CREATE PROCEDURE BalancePerCustomer
    @name varchar(50)
 AS
